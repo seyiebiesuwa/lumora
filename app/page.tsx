@@ -8,24 +8,23 @@ const moods = [
   { name: "punk", image: "/faces/punk.jpg" },
   { name: "editorial", image: "/faces/editorial.jpg" },
   { name: "goth", image: "/faces/goth.jpg" },
-  { name: "glowy", image: "/faces/glamy.jpg" },
+  { name: "glowy", image: "/faces/glowy.jpg" },
   { name: "bold color", image: "/faces/bold-color.jpg" },
   { name: "bronze", image: "/faces/bronze.jpg" },
 ];
 
-const heroPolaroids = [
-  { label: "soft glam", image: "/faces/soft-glam.jpg", rotate: "-rotate-6" },
-  { label: "clean", image: "/faces/clean.jpg", rotate: "rotate-3" },
-  { label: "editorial", image: "/faces/editorial.jpg", rotate: "rotate-6" },
-  { label: "punk", image: "/faces/punk.jpg", rotate: "-rotate-3" },
-  { label: "goth", image: "/faces/goth.jpg", rotate: "rotate-2" },
-  { label: "bold color", image: "/faces/bold-color.jpg", rotate: "-rotate-2" },
-  { label: "drag", image: "/faces/drag.jpg", rotate: "rotate-4" },
-  { label: "bronze", image: "/faces/bronze.jpg", rotate: "-rotate-4" },
-  { label: "glowy", image: "/faces/glamy.jpg", rotate: "rotate-3" },
+const occasions = [
+  "everyday",
+  "office look",
+  "bridal makeup",
+  "date night",
+  "party",
+  "festival",
+  "photoshoot",
+  "first try",
 ];
 
-const budgets = ["use what i own", "under €20", "€20 – €50", "luxury mix"];
+const budgets = ["under €20", "€20 – €50", "€50 – €100", "luxury mix"];
 
 const lookPlans: Record<
   string,
@@ -33,110 +32,196 @@ const lookPlans: Record<
     title: string;
     note: string;
     steps: string[];
-    products: string[];
+    artistTips: string[];
+    products: {
+      drugstore: string[];
+      mid: string[];
+      luxury: string[];
+    };
   }
 > = {
   clean: {
-    title: "soft clean glow",
-    note: "Quiet skin, soft edges, nothing overworked.",
+    title: "quiet skin",
+    note: "Fresh texture. Light placement. Nothing overworked.",
     steps: [
-      "Start with hydration, not coverage.",
-      "Use tint or concealer only where you want balance.",
+      "Hydrate first; let skincare settle.",
+      "Use concealer only where you want balance.",
       "Tap cream blush high on cheeks.",
-      "Brush brows up without forcing the shape.",
-      "Finish with balm, gloss, or a sheer lip.",
+      "Brush brows up softly.",
+      "Finish with balm or gloss.",
     ],
-    products: ["skin tint", "cream blush", "brow gel", "lip balm"],
+    artistTips: [
+      "Powder only where makeup moves.",
+      "Use fingers for cream products if you want it to melt in.",
+      "A tiny bit of blush across the nose makes it feel lived-in.",
+    ],
+    products: {
+      own: ["moisturizer", "concealer", "lip balm", "cream blush"],
+      drugstore: ["e.l.f. Halo Glow", "NYX brow gel", "Maybelline concealer"],
+      mid: ["Rare Beauty blush", "Fenty skin tint", "Glossier balm"],
+      luxury: ["Armani Luminous Silk", "Dior Lip Glow", "Westman stick"],
+    },
   },
   "soft glam": {
     title: "soft focus glam",
-    note: "Polished, warm, diffused. Still you.",
+    note: "Warmth, softness, structure.",
     steps: [
-      "Keep the base light and alive.",
+      "Keep the base even but light.",
       "Blend warm brown around the eyes.",
-      "Use brown liner close to the lash line.",
-      "Add gentle warmth where you want depth.",
-      "Finish with a nude, rose, brown, or berry lip.",
+      "Use brown liner close to lashes.",
+      "Add warmth to cheeks and temples.",
+      "Blur the lip edge softly.",
     ],
-    products: ["brown shadow", "brown liner", "blush", "lip liner"],
+    artistTips: [
+      "Brown liner is softer than black.",
+      "Cream blush under powder blush helps it last.",
+      "Use bronzer higher if you want lift.",
+    ],
+    products: {
+      own: ["brown liner", "bronzer", "neutral shadow", "clear gloss"],
+      drugstore: ["NYX lip liner", "Milani blush", "L’Oréal mascara"],
+      mid: ["MAC lip pencil", "Fenty Gloss Bomb", "Rare Beauty bronzer"],
+      luxury: ["Charlotte Tilbury liner", "Makeup by Mario palette", "Armani base"],
+    },
   },
   punk: {
     title: "lived-in liner",
     note: "A little messy. On purpose.",
     steps: [
       "Keep skin simple.",
-      "Use black or dark brown pencil around the lash line.",
-      "Smudge with a finger, cotton bud, or brush.",
-      "Add blush only if you want contrast.",
-      "Finish with stain, gloss, or a deep lip.",
+      "Draw dark liner close to lashes.",
+      "Smudge with a finger or cotton bud.",
+      "Add mascara and leave some friction.",
+      "Finish with gloss, stain, or deep lip.",
     ],
-    products: ["black pencil", "dark shadow", "clear gloss", "deep lip"],
+    artistTips: [
+      "Do liner before concealer so you can clean after.",
+      "Balm over shadow gives slept-in texture.",
+      "Do not overblend.",
+    ],
+    products: {
+      own: ["black pencil", "cotton bud", "old mascara", "balm"],
+      drugstore: ["Rimmel kohl liner", "Essence mascara", "NYX gloss"],
+      mid: ["Urban Decay pencil", "MAC eye kohl", "Fenty gloss"],
+      luxury: ["Victoria Beckham liner", "Pat McGrath shadow", "Gucci lipstick"],
+    },
   },
   editorial: {
     title: "one strange detail",
-    note: "A face with a point of view.",
+    note: "One idea. One focal point.",
     steps: [
-      "Choose one feature: eyes, cheeks, lips, or shine.",
+      "Choose one feature.",
       "Keep the rest restrained.",
-      "Place color somewhere slightly unexpected.",
-      "Echo the color once, softly.",
-      "Stop before it becomes too explained.",
+      "Place shape or color intentionally.",
+      "Echo a tiny detail once.",
+      "Stop before it over-explains itself.",
     ],
-    products: ["cream pigment", "gloss", "mascara", "blush"],
+    artistTips: [
+      "One strong idea is better than five small ones.",
+      "Use tape for sharp graphic shapes.",
+      "Gloss creases. Sometimes that is the point.",
+    ],
+    products: {
+      own: ["lipstick as blush", "clear gloss", "bright shadow", "liner"],
+      drugstore: ["NYX color liner", "Kiko shadow stick", "e.l.f. putty blush"],
+      mid: ["About-Face eye paint", "Danessa Myricks Colorfix", "MAC pigment"],
+      luxury: ["Pat McGrath palette", "Dior Backstage", "YSL lip color"],
+    },
   },
   goth: {
     title: "romantic dark glam",
-    note: "Smoke, shadow, gloss, restraint.",
+    note: "Soft shadow. Smoke. Structure.",
     steps: [
       "Create a soft base.",
-      "Smoke dark shadow around the eyes.",
-      "Use grey-brown, plum, black, or espresso tones.",
-      "Keep blush muted or very intentional.",
-      "Finish with brown, berry, plum, or black cherry lips.",
+      "Smoke cool tones around the eyes.",
+      "Keep depth close to lash line.",
+      "Use blush quietly.",
+      "Finish with berry or black cherry lips.",
     ],
-    products: ["smoky shadow", "cool contour", "berry lip", "powder"],
+    artistTips: [
+      "Plum is softer than black.",
+      "Powder around the mouth before dark lip.",
+      "Keep one edge soft so it feels romantic.",
+    ],
+    products: {
+      own: ["dark shadow", "brown pencil", "berry lipstick", "powder"],
+      drugstore: ["Essence liner", "Maybelline tattoo shadow", "NYX lip cream"],
+      mid: ["MAC Diva", "Urban Decay pencil", "Fenty contour"],
+      luxury: ["Pat McGrath lipstick", "Chanel shadow quad", "Dior powder"],
+    },
   },
   glowy: {
     title: "wet light",
-    note: "Glow is placement. Not a filter.",
+    note: "Glow is placement. Not perfection.",
     steps: [
       "Prep skin generously.",
       "Use sheer base or no base.",
-      "Add highlight to cheekbones, lids, and nose bridge.",
+      "Highlight cheekbones, lids and nose bridge.",
       "Use blush as a soft wash.",
-      "Finish lips with balm or gloss.",
+      "Finish with balm or gloss.",
     ],
-    products: ["moisturizer", "liquid highlight", "balm", "cream blush"],
+    artistTips: [
+      "Glow everywhere becomes shine. Choose the high points.",
+      "If oily, powder center and keep glow on cheeks.",
+      "Mix highlighter into moisturizer for body glow.",
+    ],
+    products: {
+      own: ["moisturizer", "balm", "cream blush", "clear gloss"],
+      drugstore: ["e.l.f. Halo Glow", "Catrice highlighter", "NYX gloss"],
+      mid: ["Saie Glowy Gel", "Rare Beauty highlighter", "Fenty Gloss Bomb"],
+      luxury: ["Charlotte Tilbury Flawless Filter", "Dior Glow Palette", "Armani Fluid Sheer"],
+    },
   },
   "bold color": {
-    title: "color with a point",
-    note: "One vivid choice can carry the whole face.",
+    title: "color with intention",
+    note: "One vivid choice can carry the face.",
     steps: [
       "Choose one color family.",
       "Keep skin balanced.",
-      "Place color on eyes, cheeks, or lips.",
-      "Echo the color softly somewhere else.",
-      "Use gloss or mascara to pull it together.",
+      "Place color with intent.",
+      "Echo it softly somewhere else.",
+      "Ground it with gloss or mascara.",
     ],
-    products: ["bright shadow", "color liner", "cream blush", "gloss"],
+    artistTips: [
+      "Color looks stronger when the rest is calm.",
+      "Use concealer on lids first to make pigment pop.",
+      "Repeat one tiny color note elsewhere.",
+    ],
+    products: {
+      own: ["bright lipstick", "colored pencil", "blush", "gloss"],
+      drugstore: ["NYX color liner", "Kiko shadow stick", "e.l.f. blush"],
+      mid: ["About-Face eye paint", "Danessa Myricks Colorfix", "Fenty blush"],
+      luxury: ["Pat McGrath palette", "Dior blush", "YSL lip color"],
+    },
   },
   bronze: {
-    title: "warm sunlit skin",
-    note: "Warmth, light, shadow. That’s the look.",
+    title: "sun warmth",
+    note: "Bronze is warmth, not a skin tone.",
     steps: [
-      "Choose a bronzer that brings warmth.",
-      "Place it where the sun naturally hits.",
-      "Use copper, caramel, rose, or espresso around the eyes.",
-      "Add glow only where you want light.",
-      "Finish with a lip that sits well with the warmth.",
+      "Choose warmth, not grey shadow.",
+      "Place it where sun naturally hits.",
+      "Use copper, caramel, rose or espresso around eyes.",
+      "Add glow selectively.",
+      "Balance with a warm lip.",
     ],
-    products: ["bronzer", "warm shadow", "highlight", "lip liner"],
+    artistTips: [
+      "Bronzer is not contour.",
+      "Place warmth slightly higher for lift.",
+      "Use the same bronzer softly on eyes.",
+    ],
+    products: {
+      own: ["brown liner", "warm shadow", "bronzer", "lip balm"],
+      drugstore: ["Milani bronzer", "NYX lip liner", "Maybelline mascara"],
+      mid: ["Fenty bronzer", "Rare Beauty bronzer stick", "MAC lip pencil"],
+      luxury: ["Makeup by Mario Skin Enhancer", "Charlotte Tilbury bronzer", "Armani glow base"],
+    },
   },
 };
 
 export default function Home() {
   const [selectedMood, setSelectedMood] = useState("soft glam");
-  const [selectedBudget, setSelectedBudget] = useState("use what i own");
+  const [selectedOccasion, setSelectedOccasion] = useState("everyday");
+  const [selectedBudget, setSelectedBudget] = useState("€20 – €50");
   const [preview, setPreview] = useState<string | null>(null);
   const [showPlan, setShowPlan] = useState(false);
 
@@ -144,7 +229,6 @@ export default function Home() {
 
   const handleImageUpload = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
-
     if (file) {
       setPreview(URL.createObjectURL(file));
       setShowPlan(false);
@@ -152,331 +236,426 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-[#efe0ca] text-[#1b120d]">
-      <header className="flex items-center justify-between px-6 py-5 font-mono text-sm font-black uppercase tracking-widest md:px-10">
-        <div className="text-3xl text-[#b94f2f]">Lumora</div>
+    <main className="min-h-screen bg-[#f6f1e8] text-black">
+      <section className="relative overflow-hidden">
+        <div className="grid min-h-[820px] md:grid-cols-[0.9fr_1.1fr]">
+          <div className="relative z-20 flex flex-col px-8 pb-12 pt-8 md:px-10 md:pt-10">
+            <div className="flex items-center justify-between font-mono text-[13px] uppercase tracking-tight">
+              <div className="text-[44px] font-black tracking-[-0.08em]">
+                Lumora
+              </div>
 
-        <nav className="hidden gap-10 md:flex">
-          <a>home</a>
-          <a>ethos</a>
-          <a>how it works</a>
-          <a>journal</a>
-        </nav>
+              <nav className="hidden gap-10 md:flex">
+                <a className="underline underline-offset-4">home</a>
+                <a>ethos</a>
+                <a>how it works</a>
+                <a>journal</a>
+              </nav>
 
-        <button className="rounded-full bg-[#111] px-7 py-3 text-white">
-          16+
-        </button>
-      </header>
-
-      <section className="grid gap-8 px-6 pb-12 pt-6 md:grid-cols-[0.9fr_1.1fr] md:px-10">
-        <div className="relative">
-          <p className="mb-5 w-fit rounded-full bg-[#c96b2d] px-4 py-2 font-mono text-xs font-black uppercase tracking-widest text-white">
-            beauty, built by hand
-          </p>
-
-          <h1 className="max-w-xl text-[72px] font-black uppercase leading-[0.82] tracking-[-0.07em] text-[#32120b] md:text-[118px]">
-            what’s your
-            <span className="block text-[#c95e51]">beauty mood</span>
-            <span className="block font-serif text-[0.75em] font-normal lowercase italic tracking-[-0.04em]">
-              today?
-            </span>
-          </h1>
-
-          <p className="mt-8 max-w-md font-mono text-sm leading-relaxed">
-            Lumora turns a makeup reference into a real-life plan: what to use,
-            where to put it, and how to make it work with your budget.
-          </p>
-
-          <button className="mt-8 rounded-full bg-[#b94f2f] px-8 py-4 font-mono text-sm uppercase tracking-widest text-white">
-            build your look →
-          </button>
-
-          <div className="mt-8 rounded-[28px] bg-[#f7ecd9] p-5 shadow-md md:max-w-sm">
-            <p className="font-serif text-3xl italic">
-              The face stays. The mood changes.
-            </p>
-            <p className="mt-3 font-mono text-xs leading-relaxed">
-              16+ because your face is not content. Uploading it should feel
-              considered, not casual.
-            </p>
-          </div>
-        </div>
-
-        <div className="relative grid grid-cols-3 gap-3">
-          <div className="absolute left-4 top-16 z-20 rotate-[-8deg] rounded-full bg-[#d4a64e] px-6 py-5 text-center font-mono text-sm font-black">
-            use what <br /> you already <br /> own ♡
-          </div>
-
-          <div className="absolute right-2 top-56 z-20 rotate-6 rounded-full bg-[#c95e72] px-5 py-5 text-center font-mono text-sm font-black">
-            taste over <br /> trend over <br /> noise
-          </div>
-
-          {heroPolaroids.map((item) => (
-            <div
-              key={item.label}
-              className={`bg-[#f7ecd9] p-3 shadow-xl ${item.rotate}`}
-            >
-              <img
-                src={item.image}
-                alt={item.label}
-                className="h-40 w-full object-cover md:h-52"
-              />
-              <p className="mt-2 text-center font-serif text-2xl italic">
-                {item.label}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="border-y border-[#8b4a2f] bg-[#c96b2d] py-3 font-mono text-sm uppercase tracking-widest text-[#23120c]">
-        <p className="text-center">
-          technique ✶ instinct ✶ texture ✶ budget ✶ play ✶
-        </p>
-      </section>
-
-      <section className="grid gap-8 border-b border-[#b89976] px-6 py-10 md:grid-cols-[260px_1fr] md:px-10">
-        <div>
-          <p className="font-mono text-xs uppercase">step 01</p>
-          <h2 className="mt-2 text-4xl font-black uppercase leading-none">
-            pick a direction
-          </h2>
-          <p className="mt-4 font-serif text-2xl italic">
-            Some looks whisper. Some looks bite.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-2 gap-3 md:grid-cols-4 lg:grid-cols-8">
-          {moods.map((mood) => (
-            <button
-              key={mood.name}
-              onClick={() => {
-                setSelectedMood(mood.name);
-                setShowPlan(false);
-              }}
-              className={`rounded-lg border p-2 text-left transition ${
-                selectedMood === mood.name
-                  ? "border-[#b94f2f] bg-[#f4d4c1]"
-                  : "border-[#9b8267] bg-[#f7ecd9]"
-              }`}
-            >
-              <p className="mb-2 font-mono text-xs font-black uppercase text-[#b94f2f]">
-                {mood.name}
-              </p>
-              <img
-                src={mood.image}
-                alt={mood.name}
-                className="h-32 w-full rounded object-cover"
-              />
-            </button>
-          ))}
-        </div>
-      </section>
-
-      <section className="grid gap-8 border-b border-[#b89976] px-6 py-10 md:grid-cols-[260px_1fr] md:px-10">
-        <div className="bg-[#e3a09a] p-5">
-          <p className="font-mono text-xs uppercase">step 02</p>
-          <h2 className="mt-2 text-4xl font-black uppercase leading-none">
-            set the budget
-          </h2>
-          <p className="mt-4 font-serif text-2xl italic">
-            More product is not always more look.
-          </p>
-        </div>
-
-        <div className="grid gap-3 md:grid-cols-4">
-          {budgets.map((budget) => (
-            <button
-              key={budget}
-              onClick={() => {
-                setSelectedBudget(budget);
-                setShowPlan(false);
-              }}
-              className={`rounded-lg border px-6 py-6 font-mono text-sm uppercase ${
-                selectedBudget === budget
-                  ? "bg-[#b94f2f] text-white"
-                  : "border-[#9b8267] bg-[#f7ecd9]"
-              }`}
-            >
-              {budget}
-            </button>
-          ))}
-        </div>
-      </section>
-
-      <section className="grid gap-8 border-b border-[#b89976] px-6 py-12 md:grid-cols-[1fr_1fr] md:px-10">
-        <div>
-          <p className="font-mono text-xs uppercase text-[#b94f2f]">
-            product logic
-          </p>
-          <h2 className="mt-3 text-6xl font-black uppercase leading-[0.88] tracking-[-0.06em]">
-            buy less.
-            <span className="block font-serif font-normal lowercase italic">
-              understand more.
-            </span>
-          </h2>
-        </div>
-
-        <div className="space-y-5 font-mono text-sm leading-relaxed">
-          <p>
-            A brown liner can soften an eye, deepen a lip, or sketch a shadow.
-            Blush can live on cheeks, nose, lids, or lips. Balm can turn powder
-            into shine.
-          </p>
-          <p>
-            Lumora is built for product logic: the reason something works, the
-            cheaper swap, the luxury option, and the thing already sitting in
-            your bag.
-          </p>
-        </div>
-      </section>
-
-      <section className="grid gap-8 px-6 py-10 md:grid-cols-[260px_1fr_1fr] md:px-10">
-        <div>
-          <p className="font-mono text-xs uppercase">step 03</p>
-          <h2 className="mt-2 text-4xl font-black uppercase leading-none">
-            add your face
-          </h2>
-          <p className="mt-3 font-serif text-2xl italic">
-            Only when you feel like it.
-          </p>
-
-          <label className="mt-8 flex h-40 cursor-pointer flex-col items-center justify-center rounded-lg border border-dashed border-[#8b6f58] bg-[#f7ecd9] font-mono uppercase">
-            📷
-            <span className="mt-2 font-black">upload photo</span>
-            <span className="text-xs lowercase">local preview only for now</span>
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handleImageUpload}
-              className="hidden"
-            />
-          </label>
-        </div>
-
-        <div className="-rotate-3 bg-[#f7ecd9] p-4 shadow-xl">
-          <img
-            src={preview || "/faces/upload-preview.jpg"}
-            alt="preview"
-            className="h-80 w-full object-cover"
-          />
-          <div className="mt-4 flex flex-wrap gap-2">
-            <span className="rounded-full bg-[#df7890] px-5 py-2 font-mono text-sm">
-              {selectedMood}
-            </span>
-            <span className="rounded-full bg-[#d68a22] px-5 py-2 font-mono text-sm">
-              {selectedBudget}
-            </span>
-          </div>
-        </div>
-
-        <div className="relative rounded-sm bg-[#bd5a46] p-8 text-[#f7ecd9]">
-          <div className="absolute right-8 top-[-20px] rotate-6 bg-[#d8ae61] p-5 font-mono text-sm text-black shadow">
-            technique <br /> not magic ✶
-          </div>
-
-          <p className="font-mono text-xs uppercase">you get</p>
-          <h2 className="mt-3 text-5xl font-black uppercase leading-none">
-            your makeup plan
-          </h2>
-
-          <div className="mt-8 space-y-5 font-mono text-sm">
-            <p>◎ steps you can actually follow</p>
-            <p>◎ product logic: what goes where and why</p>
-            <p>◎ swaps for what you own, drugstore, mid-range or luxury</p>
-            <p>◎ a look to make — not a face to become</p>
-          </div>
-
-          <button
-            onClick={() => setShowPlan(true)}
-            className="mt-8 rounded-full bg-[#f7ecd9] px-7 py-4 font-mono text-sm font-black uppercase text-[#1b120d]"
-          >
-            create my plan
-          </button>
-        </div>
-      </section>
-
-      {showPlan && (
-        <section className="grid gap-8 border-t border-[#b89976] bg-[#f4dfc8] px-6 py-12 md:grid-cols-[0.9fr_1.1fr] md:px-10">
-          <div>
-            <p className="font-mono text-xs uppercase text-[#b94f2f]">
-              your look plan
-            </p>
-            <h2 className="mt-3 text-6xl font-black uppercase leading-[0.88] tracking-[-0.06em]">
-              {plan.title}
-            </h2>
-            <p className="mt-5 max-w-md font-serif text-2xl italic">
-              {plan.note}
-            </p>
-          </div>
-
-          <div className="rounded-[28px] bg-[#f7ecd9] p-6 shadow-md">
-            <p className="font-mono text-xs uppercase tracking-widest text-[#b94f2f]">
-              recreate it
-            </p>
-
-            <div className="mt-5 space-y-3">
-              {plan.steps.map((step, index) => (
-                <div
-                  key={step}
-                  className="grid grid-cols-[40px_1fr] gap-3 rounded-2xl bg-[#efe0ca] p-4 font-mono text-sm"
-                >
-                  <span className="font-black">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <p>{step}</p>
-                </div>
-              ))}
+              <button className="rounded-full border border-black px-5 py-2 text-xs">
+                16+
+              </button>
             </div>
 
-            <p className="mt-7 font-mono text-xs uppercase tracking-widest text-[#b94f2f]">
-              product logic / {selectedBudget}
-            </p>
+            <div className="mt-12 w-fit bg-[#f5b400] px-4 py-2 font-mono text-xs font-black uppercase tracking-wide">
+              trial mode open
+            </div>
 
-            <div className="mt-4 flex flex-wrap gap-2">
-              {plan.products.map((product) => (
-                <span
-                  key={product}
-                  className="rounded-full bg-[#1b120d] px-4 py-2 font-mono text-sm text-white"
-                >
-                  {product}
+            <div className="mt-6">
+              <h1 className="text-[88px] font-black uppercase leading-[0.82] tracking-[-0.08em] md:text-[126px]">
+                what’s your
+                <span className="block">
+                  beauty <span className="italic text-[#e2231a]">mood</span>
                 </span>
-              ))}
+                <span className="block font-serif text-[0.68em] font-normal italic lowercase tracking-[-0.04em]">
+                  today?
+                </span>
+              </h1>
+
+              <p className="mt-8 max-w-[420px] font-mono text-[17px] leading-relaxed">
+                Turn any makeup reference into a real-life plan: what to use,
+                where to put it, and how to make it work with your budget.
+              </p>
+
+              <div className="mt-8 flex flex-wrap gap-3">
+                <a
+                  href="#build"
+                  className="bg-black px-7 py-4 font-mono text-sm uppercase tracking-wide text-white transition hover:translate-y-[-2px]"
+                >
+                  try free ↗
+                </a>
+                <a
+                  href="#pricing"
+                  className="border border-black px-7 py-4 font-mono text-sm uppercase tracking-wide"
+                >
+                  Lumora Club
+                </a>
+              </div>
             </div>
           </div>
-        </section>
-      )}
 
-      <section className="border-t border-[#b89976] bg-[#1b120d] px-6 py-12 text-[#f7ecd9] md:px-10">
-        <div className="grid gap-8 md:grid-cols-[0.8fr_1.2fr]">
-          <h2 className="text-6xl font-black uppercase leading-[0.88] tracking-[-0.06em]">
-            made for
-            <span className="block font-serif font-normal lowercase italic">
-              the mirror.
-            </span>
-          </h2>
+          <div className="relative hidden overflow-hidden md:block">
+            <div className="absolute left-0 top-0 h-[420px] w-[330px] rotate-[-3deg] overflow-hidden shadow-2xl">
+              <img src="/faces/soft-glam.jpg" alt="" className="h-full w-full object-cover" />
+            </div>
 
-          <div className="space-y-5 font-mono text-sm leading-relaxed text-[#ead8bd]">
-            <p>
-              Bathroom light. Backseat liner. Wedding nerves. A borrowed blush.
-              A saved reference. A look you tried at midnight and almost got
-              right.
-            </p>
-            <p>
-              Lumora sits somewhere between a makeup artist, an older cousin,
-              and a very specific group chat. Less fixing. More experimenting.
-            </p>
+            <div className="absolute right-24 top-0 h-[360px] w-[260px] rotate-[4deg] overflow-hidden shadow-2xl">
+              <img src="/faces/bold-color.jpg" alt="" className="h-full w-full object-cover" />
+            </div>
+
+            <div className="absolute left-[240px] top-[120px] z-30 h-[520px] w-[260px] overflow-hidden rounded-[44px] border-[10px] border-[#2a2a2a] bg-black shadow-[0_30px_100px_rgba(0,0,0,0.35)]">
+              <img src="/faces/clean.jpg" alt="" className="h-full w-full object-cover" />
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 to-transparent px-5 pb-5 pt-20">
+                <div className="flex items-center justify-between font-mono text-[11px] text-white/70">
+                  <span>VIDEO</span>
+                  <span className="text-[#f5b400]">PHOTO</span>
+                  <span>PORTRAIT</span>
+                </div>
+                <div className="mt-5 flex items-center justify-center">
+                  <div className="flex h-20 w-20 items-center justify-center rounded-full border-[5px] border-white">
+                    <div className="h-14 w-14 rounded-full bg-white" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="absolute left-[120px] top-[380px] h-[340px] w-[240px] rotate-[-8deg] overflow-hidden shadow-2xl">
+              <img src="/faces/punk.jpg" alt="" className="h-full w-full object-cover" />
+            </div>
+
+            <div className="absolute right-0 top-[140px] h-[340px] w-[260px] rotate-[5deg] overflow-hidden shadow-2xl">
+              <img src="/faces/editorial.jpg" alt="" className="h-full w-full object-cover" />
+            </div>
+
+            <div className="absolute bottom-0 right-10 h-[220px] w-[320px] overflow-hidden shadow-xl">
+              <img src="/faces/glowy.jpg" alt="" className="h-full w-full object-cover" />
+            </div>
           </div>
         </div>
       </section>
 
-      <footer className="flex flex-col gap-4 border-t border-[#b89976] px-6 py-6 font-mono text-xs uppercase md:flex-row md:items-center md:justify-between md:px-10">
-        <span className="text-3xl font-black text-[#b94f2f]">Lumora</span>
-        <span className="font-serif text-2xl lowercase italic">
-          try the look. keep the face.
-        </span>
+      <section className="grid grid-cols-4 border-y border-black font-mono text-sm font-black uppercase md:grid-cols-8">
+        {["technique", "instinct", "texture", "budget", "play", "shop", "save", "repeat"].map(
+          (item, index) => (
+            <div
+              key={index}
+              className={`flex items-center justify-between border-r border-black px-6 py-4 ${
+                [
+                  "bg-[#fbba16]",
+                  "bg-[#00492c] text-white",
+                  "bg-[#9bccd0]",
+                  "bg-[#e22028] text-white",
+                  "bg-[#e2b2b4]",
+                ][index % 5]
+              }`}
+            >
+              {item}
+              <span>✱</span>
+            </div>
+          )
+        )}
+      </section>
+
+      <section id="build" className="grid bg-[#082a8f] text-white md:grid-cols-[260px_1fr]">
+        <aside className="border-r border-black/20 bg-[#e2b2b4] text-black">
+          {["pick a direction", "choose occasion", "set budget", "add your face"].map(
+            (item, index) => (
+              <div
+                key={item}
+                className="flex gap-8 border-b border-black/20 px-8 py-10 font-mono uppercase"
+              >
+                <span className="text-2xl">{String(index + 1).padStart(2, "0")}</span>
+                <span>{item}</span>
+              </div>
+            )
+          )}
+        </aside>
+
+        <div className="px-8 py-8 md:px-12">
+          <div className="mb-8 flex items-end justify-between">
+            <h2 className="text-5xl font-black uppercase leading-[0.9]">
+              some looks whisper.
+              <span className="block italic">some looks bite.</span>
+            </h2>
+            <span className="hidden font-mono text-sm uppercase md:block">trial mode →</span>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-8">
+            {moods.map((mood) => (
+              <button
+                key={mood.name}
+                onClick={() => {
+                  setSelectedMood(mood.name);
+                  setShowPlan(false);
+                }}
+                className={`border p-2 text-left transition ${
+                  selectedMood === mood.name
+                    ? "border-[#ff7b00] bg-[#14379f]"
+                    : "border-white/10 bg-white/5"
+                }`}
+              >
+                <img src={mood.image} alt={mood.name} className="h-40 w-full object-cover" />
+                <p className="mt-2 font-mono text-sm lowercase">{mood.name}</p>
+              </button>
+            ))}
+          </div>
+
+          <div className="mt-10 border-t border-white/15 pt-10">
+            <p className="font-mono text-xs uppercase text-[#fbba16]">occasion</p>
+            <div className="mt-4 flex flex-wrap gap-3">
+              {occasions.map((occasion) => (
+                <button
+                  key={occasion}
+                  onClick={() => {
+                    setSelectedOccasion(occasion);
+                    setShowPlan(false);
+                  }}
+                  className={`px-4 py-3 font-mono text-sm lowercase ${
+                    selectedOccasion === occasion
+                      ? "bg-[#fbba16] text-black"
+                      : "border border-white/20 text-white"
+                  }`}
+                >
+                  {occasion}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-10 border-t border-white/15 pt-10">
+            <p className="font-mono text-xs uppercase text-[#fbba16]">budget</p>
+            <div className="mt-4 grid gap-3 md:grid-cols-4">
+              {budgets.map((budget) => (
+                <button
+                  key={budget}
+                  onClick={() => {
+                    setSelectedBudget(budget);
+                    setShowPlan(false);
+                  }}
+                  className={`px-5 py-5 font-mono text-sm lowercase ${
+                    selectedBudget === budget
+                      ? "bg-[#e22028] text-white"
+                      : "border border-white/20 text-white"
+                  }`}
+                >
+                  {budget}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-10 grid gap-8 border-t border-white/15 pt-10 md:grid-cols-[260px_1fr_1fr]">
+            <div>
+              <h2 className="text-4xl font-black uppercase leading-none">add your face</h2>
+              <p className="mt-3 font-serif text-2xl italic text-white/70">Only when you feel like it.</p>
+
+              <label className="mt-8 flex h-40 cursor-pointer flex-col items-center justify-center border border-dashed border-white/30 bg-white/5 font-mono uppercase">
+                📷
+                <span className="mt-2 font-black">upload photo</span>
+                <span className="text-xs lowercase text-white/50">local preview only for now</span>
+                <input type="file" accept="image/*" onChange={handleImageUpload} className="hidden" />
+              </label>
+            </div>
+
+            <div className="rotate-[-2deg] bg-white p-3 text-black shadow-xl">
+              <img src={preview || "/faces/upload-preview.jpg"} alt="preview" className="h-80 w-full object-cover" />
+              <div className="mt-4 flex flex-wrap gap-2">
+                <span className="rounded-full bg-[#e2b2b4] px-5 py-2 font-mono text-sm">{selectedMood}</span>
+                <span className="rounded-full bg-[#fbba16] px-5 py-2 font-mono text-sm">{selectedBudget}</span>
+              </div>
+            </div>
+
+            <div className="bg-[#e22028] p-8 text-white">
+              <p className="font-mono text-xs uppercase">trial result</p>
+              <h2 className="mt-3 text-5xl font-black uppercase leading-none">your makeup plan</h2>
+
+              <div className="mt-8 space-y-5 font-mono text-sm">
+                <p>◎ base-to-finish steps</p>
+                <p>◎ artist notes for placement and wear</p>
+                <p>◎ product swaps by budget</p>
+                <p>◎ shop buttons ready for affiliate links</p>
+              </div>
+
+              <button
+                onClick={() => setShowPlan(true)}
+                className="mt-8 bg-black px-7 py-4 font-mono text-sm font-black uppercase text-white"
+              >
+                create my plan
+              </button>
+            </div>
+          </div>
+
+          {showPlan && (
+            <section className="mt-10 grid gap-8 border-t border-white/15 pt-10 md:grid-cols-[0.9fr_1.1fr]">
+              <div>
+                <p className="font-mono text-xs uppercase text-[#fbba16]">
+                  {selectedOccasion} / {selectedBudget}
+                </p>
+                <h2 className="mt-3 text-6xl font-black uppercase leading-[0.88] tracking-[-0.06em]">
+                  {plan.title}
+                </h2>
+                <p className="mt-5 max-w-md font-serif text-2xl italic text-white/75">{plan.note}</p>
+
+                <div className="mt-8 border border-white/15 bg-white/5 p-5">
+                  <p className="font-mono text-xs uppercase text-[#fbba16]">artist notes</p>
+                  <div className="mt-4 space-y-3 font-mono text-sm text-white/75">
+                    {plan.artistTips.map((tip) => (
+                      <p key={tip}>✶ {tip}</p>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white p-6 text-black shadow-md">
+                <p className="font-mono text-xs uppercase tracking-widest text-[#e22028]">recreate it</p>
+
+                <div className="mt-5 space-y-3">
+                  {plan.steps.map((step, index) => (
+                    <div key={step} className="grid grid-cols-[40px_1fr] gap-3 bg-[#f6f3ee] p-4 font-mono text-sm">
+                      <span className="font-black">{String(index + 1).padStart(2, "0")}</span>
+                      <p>{step}</p>
+                    </div>
+                  ))}
+                </div>
+
+                <p className="mt-7 font-mono text-xs uppercase tracking-widest text-[#e22028]">
+                  product logic / affiliate-ready
+                </p>
+
+                <div className="mt-4 grid gap-3 md:grid-cols-2">
+                  <ProductBox title="drugstore" items={plan.products.drugstore} shop />
+                  <ProductBox title="mid-range" items={plan.products.mid} shop />
+                  <ProductBox title="luxury" items={plan.products.luxury} shop />
+                </div>
+              </div>
+            </section>
+          )}
+        </div>
+      </section>
+
+      <section id="pricing" className="grid gap-6 bg-[#f6f1e8] px-8 py-16 md:grid-cols-2 md:px-12">
+        <div className="border border-black bg-white p-8">
+          <p className="font-mono text-xs uppercase text-[#e22028]">trial mode</p>
+          <h2 className="mt-3 text-5xl font-black uppercase leading-none">try the tool</h2>
+          <p className="mt-5 font-mono text-sm leading-relaxed">
+            One look plan, limited product suggestions, no saved archive.
+          </p>
+          <button className="mt-8 bg-black px-7 py-4 font-mono text-sm uppercase text-white">
+            start free
+          </button>
+        </div>
+
+        <div className="border border-black bg-[#e22028] p-8 text-white">
+          <p className="font-mono text-xs uppercase text-[#fbba16]">Lumora Club</p>
+          <h2 className="mt-3 text-5xl font-black uppercase leading-none">unlimited looks</h2>
+          <p className="mt-5 font-mono text-sm leading-relaxed">
+            Saved looks, deeper product swaps, bridal/office/event modes and affiliate shoplists.
+          </p>
+          <button className="mt-8 bg-black px-7 py-4 font-mono text-sm uppercase text-white">
+            join soon
+          </button>
+        </div>
+      </section>
+<section className="border-t border-black bg-black px-8 py-20 text-white md:px-12">
+
+  <div className="mx-auto max-w-3xl">
+
+    <p className="font-mono text-xs uppercase tracking-[0.25em] text-[#fbba16]">
+      Lumora Club
+    </p>
+
+    <h2 className="mt-4 text-6xl font-black uppercase leading-[0.9] tracking-[-0.06em]">
+
+      preview the look
+      <span className="block italic text-[#fbba16]">
+        before you make it
+      </span>
+
+    </h2>
+
+    <p className="mt-8 max-w-xl font-mono text-sm leading-relaxed text-white/70">
+
+      Upload your face. Try moods, occasions and product tiers.
+      Get a realistic makeup preview, artist notes and shop-ready
+      product recommendations.
+
+    </p>
+
+    <div className="mt-10 flex flex-col gap-4 md:flex-row">
+
+      <input
+        type="email"
+        placeholder="your@email.com"
+        className="h-14 flex-1 border border-white/20 bg-white/5 px-5 font-mono text-sm outline-none placeholder:text-white/40"
+      />
+
+      <button className="h-14 bg-[#fbba16] px-8 font-mono text-sm uppercase text-black transition hover:translate-y-[-2px]">
+
+        join waitlist
+
+      </button>
+
+    </div>
+
+    <div className="mt-5 flex flex-wrap gap-3 font-mono text-[11px] uppercase text-white/40">
+
+      <span>AI preview</span>
+
+      <span>✱</span>
+
+      <span>bridal mode</span>
+
+      <span>✱</span>
+
+      <span>office looks</span>
+
+      <span>✱</span>
+
+      <span>saved looks</span>
+
+      <span>✱</span>
+
+      <span>product matching</span>
+
+    </div>
+  </div>
+</section>
+      <footer className="flex flex-col gap-4 bg-[#f6f1e8] px-8 py-6 font-mono text-xs uppercase md:flex-row md:items-center md:justify-between md:px-12">
+        <span className="text-3xl font-black">Lumora</span>
+        <span className="font-serif text-2xl lowercase italic">try the look. keep the face.</span>
         <span>instagram &nbsp; tiktok &nbsp; pinterest</span>
       </footer>
     </main>
+  );
+}
+
+function ProductBox({
+  title,
+  items,
+  shop = false,
+}: {
+  title: string;
+  items: string[];
+  shop?: boolean;
+}) {
+  return (
+    <div className="border border-black/10 bg-[#f6f3ee] p-4">
+      <p className="font-mono text-xs font-black uppercase text-[#e22028]">
+        {title}
+      </p>
+
+      <div className="mt-3 space-y-2 font-mono text-xs">
+        {items.map((item) => (
+          <div key={item} className="flex items-center justify-between gap-3">
+            <span>• {item}</span>
+            {shop && (
+              <a href="#" className="text-[#e22028] underline underline-offset-2">
+                shop
+              </a>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
